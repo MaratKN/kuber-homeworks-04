@@ -31,7 +31,9 @@
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
 
 
-1. Создадим deployment
+
+
+1) Создадим deployment
 
 ```
 apiVersion: apps/v1
@@ -66,7 +68,7 @@ spec:
 ```
 
 
-2. Создадим Service, который обеспечит доступ внутри кластера до контейнеров приложения из п.1 по порту 9001 — nginx 80, по 9002 — multitool 8080
+2) Создадим Service, который обеспечит доступ внутри кластера до контейнеров приложения из п.1 по порту 9001 — nginx 80, по 9002 — multitool 8080
 
 ```
 apiVersion: v1
@@ -86,7 +88,7 @@ spec:
 ```
 
 
-3. Создадим отдельный Pod с приложением multitool и убедимся с помощью curl, что из пода есть доступ до приложения из п.1 по разным портам в разные контейнеры.
+3) Создадим отдельный Pod с приложением multitool и убедимся с помощью curl, что из пода есть доступ до приложения из п.1 по разным портам в разные контейнеры.
 
 ```
 apiVersion: v1
@@ -117,7 +119,7 @@ root@DebianNew:~/.kube# kubectl exec pod-multitool -- curl 10.1.83.197:80
 ![alt text](https://github.com/MaratKN/kuber-homeworks-04/blob/main/3.png)
 
 
-4. Проверим доступ с помощью curl по доменному имени сервиса.
+4) Проверим доступ с помощью curl по доменному имени сервиса.
 ```
 root@DebianNew:~/.kube# kubectl exec pod-multitool -- curl svc-multitool.default.svc.cluster.local:9001
 ```
@@ -133,7 +135,7 @@ root@DebianNew:~/.kube# kubectl exec pod-multitool -- curl svc-multitool.default
 3. Предоставить манифест и Service в решении, а также скриншоты или вывод команды п.2.
 
 
-1. Создадим сервис service-dep-nodeport.yaml
+1) Создадим сервис service-dep-nodeport.yaml
 ```
 apiVersion: v1
 kind: Service
@@ -154,7 +156,7 @@ spec:
   type: NodePort
 ```
 
-2. Проверим доступ с помощью браузера или curl с локального компьютера.
+2) Проверим доступ с помощью браузера или curl с локального компьютера.
 
 ![alt text](https://github.com/MaratKN/kuber-homeworks-04/blob/main/5.png)
 ![alt text](https://github.com/MaratKN/kuber-homeworks-04/blob/main/6.png)
